@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌿 Calma — Saúde Mental</title>
+
+  <!-- Google Fonts: importando as fontes do site -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================
+       ESTILOS GERAIS — configurações básicas
+       ========================================= */
+
+    /* Zera margens e padding padrão do navegador */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box; /* facilita o cálculo de tamanhos */
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #F5F0E8; /* bege suave de fundo */
+      color: #2A3D30;            /* verde escuro para textos */
+    }
+
+    /* =========================================
+       NAVBAR — barra de navegação no topo
+       ========================================= */
+
+    nav {
+      background-color: #FFFDF8;
+      border-bottom: 1px solid #E8E2D6;
+      padding: 14px 32px;
+      display: flex;                 /* coloca os itens lado a lado */
+      align-items: center;           /* alinha verticalmente ao centro */
+      justify-content: space-between; /* espaço entre logo e links */
+      position: sticky; /* fica fixo enquanto você rola a página */
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #3B5E4A;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px; /* espaço entre os links */
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none; /* remove o sublinhado padrão */
+      color: #5A6E5E;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* efeito ao passar o mouse nos links */
+    .nav-links a:hover {
+      color: #3B5E4A;
+    }
+
+    .btn-nav {
+      background-color: #3B5E4A;
+      color: #FFFDF8;
+      padding: 8px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .btn-nav:hover {
+      background-color: #2A3D30; /* fica mais escuro ao passar o mouse */
+    }
+
+    /* =========================================
+       HERO — seção principal de boas-vindas
+       ========================================= */
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 64px 80px;
+      background: linear-gradient(135deg, #E8F0E4 0%, #F5EDE0 60%, #EDE8F5 100%);
+    }
+
+    .hero-texto {
+      max-width: 500px;
+    }
+
+    /* a "pílula" verde com texto acima do título */
+    .hero-tag {
+      display: inline-block;
+      background-color: #D4E8D0;
+      color: #3B6E4A;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #2A3D30;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #5A6E5E;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    /* botões do hero lado a lado */
+    .hero-botoes {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-principal {
+      background-color: #3B5E4A;
+      color: #FFFDF8;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-principal:hover {
+      background-color: #2A3D30;
+    }
+
+    .btn-secundario {
+      color: #3B5E4A;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* círculo decorativo do hero */
+    .hero-visual {
+      width: 280px;
+      height: 280px;
+      background-color: #D4E8D0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px; /* emoji grande */
+      flex-shrink: 0;   /* não encolhe em telas menores */
+    }
+
+    /* =========================================
+       ESTATÍSTICAS
+       ========================================= */
+
+    .estatisticas {
+      background-color: #FFFDF8;
+      border-top: 1px solid #E8E2D6;
+      border-bottom: 1px solid #E8E2D6;
+      display: flex;
+    }
+
+    .stat {
+      flex: 1;              /* divide o espaço igualmente */
+      text-align: center;
+      padding: 24px 0;
+      border-right: 1px solid #E8E2D6;
+    }
+
+    /* remove borda do último item */
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat-numero {
+      font-size: 32px;
+      font-weight: 700;
+      color: #3B5E4A;
+    }
+
+    .stat-texto {
+      font-size: 13px;
+      color: #7A8C7E;
+      margin-top: 4px;
+    }
+
+    /* =========================================
+       SEÇÃO DE RECURSOS — os 3 cards
+       ========================================= */
+
+    .secao {
+      padding: 60px 80px;
+    }
+
+    .secao-titulo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2A3D30;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    /* grid de 3 colunas para os cards */
+    .cards {
+      display: flex;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 1;
+      background-color: #FFFDF8;
+      border: 1px solid #E8E2D6;
+      border-radius: 16px;
+      padding: 28px 24px;
+      /* transição suave para o efeito de hover */
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    /* card sobe levemente ao passar o mouse */
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(59, 94, 74, 0.1);
+    }
+
+    .card-icone {
+      font-size: 36px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #2A3D30;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #7A8C7E;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    /* botão dentro do card */
+    .btn-card {
+      display: inline-block;
+      background-color: transparent;
+      border: 1.5px solid #3B5E4A;
+      color: #3B5E4A;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn-card:hover {
+      background-color: #3B5E4A;
+      color: #FFFDF8;
+    }
+
+    /* =========================================
+       EXERCÍCIO DO DIA — destaque escuro
+       ========================================= */
+
+    .destaque {
+      margin: 0 80px 60px;
+      background-color: #2A3D30;
+      border-radius: 20px;
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .destaque-info {
+      color: #FFFDF8;
+    }
+
+    .destaque-info span {
+      font-size: 13px;
+      color: #7AB88A;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .destaque-info h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .destaque-info p {
+      font-size: 14px;
+      color: #9ABB9E;
+      line-height: 1.6;
+    }
+
+    .btn-destaque {
+      background-color: #5A8C6A;
+      color: #FFFDF8;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .btn-destaque:hover {
+      background-color: #3B5E4A;
+    }
+
+    /* =========================================
+       DIÁRIO EMOCIONAL
+       ========================================= */
+
+    .diario {
+      padding: 60px 80px;
+      background-color: #FFFDF8;
+    }
+
+    .diario-caixa {
+      max-width: 600px;
+      margin: 0 auto; /* centraliza */
+    }
+
+    .diario-titulo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2A3D30;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .diario-sub {
+      text-align: center;
+      color: #7A8C7E;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    /* linha de emojis para escolher o humor */
+    .emojis {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .emoji-opcao {
+      font-size: 32px;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background-color: #F5F0E8;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    /* quando o emoji está selecionado (adicionamos com JS) */
+    .emoji-opcao.selecionado {
+      background-color: #D4E8D0;
+      border-color: #7AB88A;
+    }
+
+    .emoji-opcao:hover {
+      transform: scale(1.1); /* cresce levemente */
+    }
+
+    /* campo de texto para o diário */
+    .diario textarea {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid #E8E2D6;
+      border-radius: 12px;
+      background-color: #F5F0E8;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      color: #2A3D30;
+      resize: vertical; /* só pode redimensionar verticalmente */
+      height: 120px;
+      margin-bottom: 16px;
+    }
+
+    .diario textarea:focus {
+      outline: none;
+      border-color: #7AB88A; /* borda verde ao clicar */
+    }
+
+    .diario textarea::placeholder {
+      color: #9AA89E;
+    }
+
+    /* botão de salvar */
+    #btn-salvar {
+      display: block;
+      width: 100%;
+      background-color: #3B5E4A;
+      color: #FFFDF8;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    #btn-salvar:hover {
+      background-color: #2A3D30;
+    }
+
+    /* mensagem que aparece após salvar */
+    .mensagem-salva {
+      display: none; /* escondida por padrão */
+      text-align: center;
+      margin-top: 16px;
+      color: #3B5E4A;
+      font-weight: 600;
+      font-size: 15px;
+      background-color: #D4E8D0;
+      padding: 12px;
+      border-radius: 12px;
+    }
+
+    /* =========================================
+       RODAPÉ
+       ========================================= */
+
+    footer {
+      background-color: #2A3D30;
+      color: #9ABB9E;
+      text-align: center;
+      padding: 32px;
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: #FFFDF8;
+    }
+
+    /* =========================================
+       MODAL — janela de exercício de respiração
+       ========================================= */
+
+    /* fundo escuro que cobre a tela */
+    .modal-fundo {
+      display: none; /* escondido por padrão */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* quando está aberto */
+    .modal-fundo.aberto {
+      display: flex;
+    }
+
+    .modal {
+      background-color: #FFFDF8;
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .modal h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2A3D30;
+      margin-bottom: 12px;
+    }
+
+    .modal p {
+      color: #5A6E5E;
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    /* círculo animado de respiração */
+    .circulo-respiracao {
+      width: 120px;
+      height: 120px;
+      background-color: #D4E8D0;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #3B5E4A;
+      /* animação definida abaixo */
+      animation: respirar 8s infinite ease-in-out;
+    }
+
+    /* define a animação: cresce e diminui */
+    @keyframes respirar {
+      0%   { transform: scale(1); }
+      25%  { transform: scale(1.4); } /* inspire */
+      75%  { transform: scale(1.4); } /* segure */
+      100% { transform: scale(1); }   /* expire */
+    }
+
+    #instrucao-respiracao {
+      font-size: 18px;
+      font-weight: 700;
+      color: #3B5E4A;
+      margin-bottom: 24px;
+      min-height: 28px;
+    }
+
+    .btn-fechar {
+      background-color: transparent;
+      border: 1.5px solid #3B5E4A;
+      color: #3B5E4A;
+      padding: 10px 28px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-fechar:hover {
+      background-color: #3B5E4A;
+      color: #FFFDF8;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ===========================
+       NAVBAR
+       =========================== -->
+  <nav>
+    <div class="logo">🌿 Calma</div>
+
+    <ul class="nav-links">
+      <li><a href="#recursos">Recursos</a></li>
+      <li><a href="#exercicio">Exercício</a></li>
+      <li><a href="#diario">Diário</a></li>
+    </ul>
+
+    <a href="#diario" class="btn-nav">Começar</a>
+  </nav>
+
+
+  <!-- ===========================
+       HERO — seção principal
+       =========================== -->
+  <section class="hero">
+    <div class="hero-texto">
+      <span class="hero-tag">🌱 Você não está sozinho</span>
+      <h1>Cuide da sua<br>saúde mental</h1>
+      <p>Ferramentas simples e acolhedoras para ajudar com ansiedade, estresse e bem-estar do dia a dia. Dê o primeiro passo.</p>
+      <div class="hero-botoes">
+        <a href="#diario" class="btn-principal">Começar agora</a>
+        <a href="#recursos" class="btn-secundario">Saiba mais</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">🧘</div>
+  </section>
+
+
+  <!-- ===========================
+       ESTATÍSTICAS
+       =========================== -->
+  <div class="estatisticas">
+    <div class="stat">
+      <div class="stat-numero">12k+</div>
+      <div class="stat-texto">Usuários ativos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-numero">50+</div>
+      <div class="stat-texto">Exercícios disponíveis</div>
+    </div>
+    <div class="stat">
+      <div class="stat-numero">4.9★</div>
+      <div class="stat-texto">Avaliação média</div>
+    </div>
+  </div>
+
+
+  <!-- ===========================
+       CARDS DE RECURSOS
+       =========================== -->
+  <section class="secao" id="recursos">
+    <h2 class="secao-titulo">O que você pode fazer aqui?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icone">🧘</div>
+        <h3>Respiração guiada</h3>
+        <p>Exercícios de respiração para aliviar a ansiedade e acalmar a mente em momentos difíceis.</p>
+        <!-- ao clicar, abre o modal de respiração (função definida no JS) -->
+        <button class="btn-card" onclick="abrirModal()">Tentar agora</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icone">📓</div>
+        <h3>Diário emocional</h3>
+        <p>Registre seus sentimentos e emoções do dia. Escrever ajuda a processar e entender o que você sente.</p>
+        <a href="#diario" class="btn-card">Abrir diário</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icone">🎵</div>
+        <h3>Sons relaxantes</h3>
+        <p>Chuva, floresta, mar... Sons da natureza para ajudar a relaxar, estudar ou dormir melhor.</p>
+        <button class="btn-card" onclick="alert('Em breve! 🎵 Esta seção está sendo desenvolvida.')">Em breve</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       DESTAQUE — Exercício do dia
+       =========================== -->
+  <div class="destaque" id="exercicio">
+    <div class="destaque-info">
+      <span>✨ Exercício do dia</span>
+      <h2>Respiração 4-7-8</h2>
+      <p>Inspire por 4 segundos, segure por 7, expire por 8. Uma das técnicas mais eficazes para reduzir ansiedade rapidamente.</p>
+    </div>
+    <!-- ao clicar, abre o modal -->
+    <button class="btn-destaque" onclick="abrirModal()">▶ Iniciar agora</button>
+  </div>
+
+
+  <!-- ===========================
+       DIÁRIO EMOCIONAL
+       =========================== -->
+  <section class="diario" id="diario">
+    <div class="diario-caixa">
+      <h2 class="diario-titulo">Como você está hoje?</h2>
+      <p class="diario-sub">Escolha um emoji que represente seu humor e escreva sobre o seu dia.</p>
+
+      <!-- linha de emojis — clicando em um, ele fica selecionado -->
+      <div class="emojis">
+        <div class="emoji-opcao" onclick="selecionarEmoji(this)">😌</div>
+        <div class="emoji-opcao" onclick="selecionarEmoji(this)">😊</div>
+        <div class="emoji-opcao" onclick="selecionarEmoji(this)">😟</div>
+        <div class="emoji-opcao" onclick="selecionarEmoji(this)">😤</div>
+        <div class="emoji-opcao" onclick="selecionarEmoji(this)">😴</div>
+        <div class="emoji-opcao" onclick="selecionarEmoji(this)">🥺</div>
+      </div>
+
+      <!-- campo de texto para escrever -->
+      <textarea id="texto-diario" placeholder="Escreva aqui sobre seu dia, seus sentimentos, o que aconteceu..."></textarea>
+
+      <!-- botão para salvar -->
+      <button id="btn-salvar" onclick="salvarDiario()">Salvar registro 💚</button>
+
+      <!-- mensagem que aparece depois de salvar -->
+      <div class="mensagem-salva" id="msg-salva">
+        ✅ Registro salvo! Obrigado por se cuidar hoje. 🌿
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       RODAPÉ
+       =========================== -->
+  <footer>
+    <p><strong>🌿 Calma</strong> — Feito com carinho para cuidar de você.</p>
+    <p style="margin-top: 8px;">Lembre-se: buscar ajuda profissional é sempre importante. 💚</p>
+  </footer>
+
+
+  <!-- ===========================
+       MODAL DE RESPIRAÇÃO
+       =========================== -->
+  <div class="modal-fundo" id="modal-respiracao">
+    <div class="modal">
+      <h2>🌬️ Respiração 4-7-8</h2>
+      <p>Siga o ritmo do círculo e as instruções abaixo. Respire junto!</p>
+
+      <!-- círculo que pulsa (animação CSS) -->
+      <div class="circulo-respiracao" id="circulo">🌬️</div>
+
+      <!-- texto que muda com JS (inspire, segure, expire) -->
+      <div id="instrucao-respiracao">Inspire...</div>
+
+      <button class="btn-fechar" onclick="fecharModal()">Encerrar exercício</button>
+    </div>
+  </div>
+
+
+  <!-- ===========================
+       JAVASCRIPT
+       Aqui ficam as funções do site
+       =========================== -->
+  <script>
+
+    // -----------------------------------------------
+    // FUNÇÃO: selecionar emoji no diário
+    // Quando clicar em um emoji, ele fica selecionado
+    // -----------------------------------------------
+    function selecionarEmoji(elemento) {
+
+      // pega todos os emojis da página
+      var todosEmojis = document.querySelectorAll('.emoji-opcao');
+
+      // remove a seleção de todos
+      for (var i = 0; i < todosEmojis.length; i++) {
+        todosEmojis[i].classList.remove('selecionado');
+      }
+
+      // adiciona seleção no que foi clicado
+      elemento.classList.add('selecionado');
+    }
+
+    // -----------------------------------------------
+    // FUNÇÃO: salvar o diário
+    // Mostra uma mensagem de confirmação
+    // -----------------------------------------------
+    function salvarDiario() {
+      var texto = document.getElementById('texto-diario').value;
+
+      // verifica se escreveu algo
+      if (texto.trim() === '') {
+        alert('Escreva algo no diário antes de salvar! 📝');
+        return; // para a função aqui
+      }
+
+      // mostra a mensagem de sucesso
+      var mensagem = document.getElementById('msg-salva');
+      mensagem.style.display = 'block';
+
+      // limpa o campo de texto
+      document.getElementById('texto-diario').value = '';
+
+      // remove a seleção dos emojis
+      var todosEmojis = document.querySelectorAll('.emoji-opcao');
+      for (var i = 0; i < todosEmojis.length; i++) {
+        todosEmojis[i].classList.remove('selecionado');
+      }
+
+      // esconde a mensagem depois de 4 segundos
+      setTimeout(function() {
+        mensagem.style.display = 'none';
+      }, 4000);
+    }
+
+
+    // -----------------------------------------------
+    // FUNÇÕES DO MODAL DE RESPIRAÇÃO
+    // -----------------------------------------------
+
+    var temporizadorRespiracao; // guarda o temporizador
+
+    function abrirModal() {
+      // mostra o modal
+      document.getElementById('modal-respiracao').classList.add('aberto');
+      // começa a animação de instrução
+      iniciarInstrucoes();
+    }
+
+    function fecharModal() {
+      // esconde o modal
+      document.getElementById('modal-respiracao').classList.remove('aberto');
+      // para o temporizador
+      clearInterval(temporizadorRespiracao);
+    }
+
+    // controla as instruções de respiração (inspire / segure / expire)
+    function iniciarInstrucoes() {
+
+      // lista de fases com o texto e a duração em segundos
+      var fases = [
+        { texto: 'Inspire...', duracao: 4 },
+        { texto: 'Segure...', duracao: 7 },
+        { texto: 'Expire...', duracao: 8 }
+      ];
+
+      var faseatual = 0; // começa na primeira fase
+
+      // atualiza o texto imediatamente
+      atualizarInstrucao(fases[0].texto);
+
+      // função que avança as fases
+      function proxima() {
+        faseatual++; // vai para próxima fase
+
+        // se passou de todas as fases, volta para a primeira
+        if (faseatual >= fases.length) {
+          faseatual = 0;
+        }
+
+        atualizarInstrucao(fases[faseatual].texto);
+
+        // agenda a próxima troca
+        temporizadorRespiracao = setTimeout(proxima, fases[faseatual].duracao * 1000);
+      }
+
+      // começa o ciclo depois da duração da primeira fase
+      temporizadorRespiracao = setTimeout(proxima, fases[0].duracao * 1000);
+    }
+
+    function atualizarInstrucao(texto) {
+      document.getElementById('instrucao-respiracao').textContent = texto;
+    }
+
+  </script>
+
+</body>
+</html>
